@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VMAS Workplace</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VMAS Workplace">
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+body{
+background:#0B0F19;
+color:#D4AF37;
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+text-align:center;
+}
+.container{
+padding:30px;
+}
+button{
+background:#D4AF37;
+color:#111827;
+border:none;
+padding:14px 22px;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>VMAS Workplace</h1>
+<p>Enterprise communication & attendance platform</p>
+
+<button onclick="openApp()">Open Workplace App</button>
+
+<p style="margin-top:25px;font-size:14px;color:#CBD5E1">
+Safari → Share → Add to Home Screen
+</p>
+</div>
+
+<script>
+function openApp(){
+window.location.href="https://officevmas-sketch.github.io/";
+}
+
+if('serviceWorker' in navigator){
+navigator.serviceWorker.register('./service-worker.js');
+}
+</script>
+</body>
+</html>
