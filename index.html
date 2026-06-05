@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VMAS Workplace</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h1>VMAS Workplace</h1>
+<p>Enterprise communication & attendance platform</p>
+
+<div class="card">
+<h2>Login</h2>
+
+<input id="company" placeholder="Company Code">
+<input id="username" placeholder="Username">
+<input id="pin" type="password" placeholder="PIN">
+
+<button onclick="login()">Login</button>
+
+<p id="status"></p>
+</div>
+
+<div id="dashboard" style="display:none;">
+<h2>Dashboard</h2>
+<p>Welcome to VMAS Workplace</p>
+
+<button onclick="punchIn()">Punch In</button>
+<button onclick="punchOut()">Punch Out</button>
+<button onclick="logout()">Logout</button>
+
+<h3>Attendance Logs</h3>
+<div id="logs"></div>
+</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
