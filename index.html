@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VMAS Workplace</title>
+<meta name="theme-color" content="#0B0F19">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VMAS Workplace">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<section id="loginView" class="card">
+<h1>VMAS Workplace</h1>
+<p class="muted">Enterprise communication, attendance & SaaS admin platform</p>
+<input id="companyCode" placeholder="Company Code e.g. vmas">
+<input id="username" placeholder="Username">
+<input id="pin" type="password" placeholder="PIN / Password">
+<button onclick="login()">Login</button>
+<button class="secondary" onclick="superAdminLogin()">Super Admin Login</button>
+<p id="loginStatus" class="status"></p>
+</section>
+
+<section id="dashboardView" class="hidden">
+<div class="topbar">
+<div><h2 id="welcomeText">Dashboard</h2><p id="planInfo" class="muted"></p></div>
+<button class="danger fit" onclick="logout()">Logout</button>
+</div>
+
+<div id="incomingBox" class="card incoming hidden">
+<h2>Incoming Call</h2><p id="incomingText"></p><button onclick="ackCall()">Acknowledge</button>
+</div>
+
+<div class="grid">
+<button onclick="showTab('employees')">Employees</button>
+<button onclick="showTab('attendance')">Attendance</button>
+<button onclick="showTab('logs')">Logs</button>
+<button id="adminBtn" class="hidden" onclick="showTab('admin')">Company Admin</button>
+<button id="superBtn" class="hidden" onclick="showTab('super')">Super Admin</button>
+</div>
+
+<section id="employeesTab" class="card tab">
+<h2>Employees</h2><div id="employeeList"></div>
+<h2>Walkie-Talkie Voice Note</h2>
+<select id="voiceTo"></select>
+<button id="talkBtn">🎤 Hold to Talk</button>
+<p id="voiceStatus" class="muted">Select employee and hold to record.</p>
+</section>
+
+<section id="attendanceTab" class="card tab hidden">
+<h2>Attendance</h2>
+<button onclick="punch('punchIn')">Punch In</button>
+<button class="danger" onclick="punch('punchOut')">Punch Out</button>
+<h3>Attendance Logs</h3><div id="attendanceLogs"></div>
+<button class="secondary" onclick="exportAttendanceCsv()">Export CSV</button>
+</section>
+
+<section id="logsTab" class="card tab hidden">
+<h2>Call & Voice Logs</h2><div id="callLogs"></div>
+</section>
+
+<section id="adminTab" class="card tab hidden">
+<h2>Company Admin</h2><p id="adminPlanInfo" class="muted"></p>
+<input id="newUserId" placeholder="Username">
+<input id="newUserName" placeholder="Full Name">
+<input id="newUserPin" placeholder="PIN">
+<input id="newUserDept" placeholder="Department">
+<button onclick="addUser()">Add / Update User</button>
+<button class="secondary" onclick="markStarterPaid()">Demo Upgrade: Starter Plan</button>
+<h3>Users</h3><div id="adminUserList"></div>
+</section>
+
+<section id="superTab" class="card tab hidden">
+<h2>Super Admin Dashboard</h2>
+<input id="newCompanyCode" placeholder="Company Code">
+<input id="newCompanyName" placeholder="Company Name">
+<select id="newCompanyPlan">
+<option value="free">Free - 10 users</option>
+<option value="starter">Starter - 25 users</option>
+<option value="growth">Growth - 100 users</option>
+<option value="enterprise">Enterprise - Unlimited</option>
+</select>
+<button onclick="createCompany()">Create / Update Company</button>
+<h3>Companies</h3><div id="companyList"></div>
+</section>
+</section>
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
